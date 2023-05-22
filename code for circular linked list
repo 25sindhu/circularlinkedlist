@@ -42,51 +42,6 @@ void display()
     struct node *temp=start;
     if(start==NULL)
     {
-        printf("\n…
-[8:52 pm, 25/03/2023] sindhu: #include <stdio.h>
-#include <stdlib.h>
-
-struct node
-{
-    int data;
-    struct node *next;
-};
-struct node *start=NULL;
-
-struct node *getnode()
-{
-    struct node*newnode;
-    newnode=(struct node*)malloc(sizeof(struct node));
-    printf("\n\t enter the element:");
-    scanf("%d",&newnode->data);
-    newnode->next=NULL;
-    return newnode;
-};
-
-void insertfront()
-{
-    struct node *newnode,*temp=start;
-    newnode=getnode();
-    if(start==NULL)
-    {
-        newnode->next=newnode;
-        start=newnode;
-    }
-    else
-    {
-        while(temp->next!=start)
-            temp=temp->next;
-        temp->next=newnode;
-        newnode->next=start;
-        start=newnode;
-    }
-}
-
-void display()
-{
-    struct node *temp=start;
-    if(start==NULL)
-    {
         printf("\n\t list empty\n");
         return;
     }
@@ -154,7 +109,7 @@ struct node *temp,*position;
     }
 }
 
-void insert();
+void insertfront();
 void delval();
 void display();
 void main()
@@ -163,9 +118,9 @@ void main()
     do
     {
         printf("\n\t circular linked list");
-        printf("\n\t<1> insert");
+        printf("\n\t<1> insertfront");
         printf("\n\t<2>display");
-        printf("\n\t <3> delete");
+        printf("\n\t <3> delete at any position");
         printf("\n\t<4>exit");
         printf("\n\t enter your choice:");
         scanf("%d",&ch);
