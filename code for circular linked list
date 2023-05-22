@@ -1,0 +1,189 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node *start=NULL;
+
+struct node *getnode()
+{
+    struct node*newnode;
+    newnode=(struct node*)malloc(sizeof(struct node));
+    printf("\n\t enter the element:");
+    scanf("%d",&newnode->data);
+    newnode->next=NULL;
+    return newnode;
+};
+
+void insertfront()
+{
+    struct node *newnode,*temp=start;
+    newnode=getnode();
+    if(start==NULL)
+    {
+        newnode->next=newnode;
+        start=newnode;
+    }
+    else
+    {
+        while(temp->next!=start)
+            temp=temp->next;
+        temp->next=newnode;
+        newnode->next=start;
+        start=newnode;
+    }
+}
+
+void display()
+{
+    struct node *temp=start;
+    if(start==NULL)
+    {
+        printf("\n…
+[8:52 pm, 25/03/2023] sindhu: #include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node *start=NULL;
+
+struct node *getnode()
+{
+    struct node*newnode;
+    newnode=(struct node*)malloc(sizeof(struct node));
+    printf("\n\t enter the element:");
+    scanf("%d",&newnode->data);
+    newnode->next=NULL;
+    return newnode;
+};
+
+void insertfront()
+{
+    struct node *newnode,*temp=start;
+    newnode=getnode();
+    if(start==NULL)
+    {
+        newnode->next=newnode;
+        start=newnode;
+    }
+    else
+    {
+        while(temp->next!=start)
+            temp=temp->next;
+        temp->next=newnode;
+        newnode->next=start;
+        start=newnode;
+    }
+}
+
+void display()
+{
+    struct node *temp=start;
+    if(start==NULL)
+    {
+        printf("\n\t list empty\n");
+        return;
+    }
+    else
+    {
+        while(temp->next!=start)
+        {
+            printf("\t%d",temp->data);
+            temp=temp->next;
+        }
+        printf("\t%d",temp->data);
+    }
+}
+
+void delval(struct node**start,int pos)
+{
+struct node *temp,*position;
+    temp=*start;
+   int count=0;
+   if(temp!=NULL)
+   {
+       count++;
+       temp=temp->next;
+   }
+   while(temp!=*start)
+   {
+       count++;
+       temp=temp->next;
+   }
+    if(pos>count||pos<0)
+    {
+        printf("\t\t invalid position\n\n");
+        return;
+    }
+    int i=1;
+
+    if( *start==NULL)
+    {
+        printf(" empty");
+    }
+    else
+    {
+       printf("delete at position : %d\n",pos);
+       if(pos==0)
+       {
+           position=*start;
+           while(temp->next!=*start)
+           {
+               temp=temp->next;
+           }
+           temp->next=(*start)->next;
+           *start=(*start)->next;
+           free(position);
+           return;
+       }
+       while(i<=pos-2)
+       {
+           temp=temp->next;
+           i++;
+       }
+       position=temp->next;
+       temp->next=position->next;
+       free(position);
+       return;
+    }
+}
+
+void insert();
+void delval();
+void display();
+void main()
+{
+    int v, ch;
+    do
+    {
+        printf("\n\t circular linked list");
+        printf("\n\t<1> insert");
+        printf("\n\t<2>display");
+        printf("\n\t <3> delete");
+        printf("\n\t<4>exit");
+        printf("\n\t enter your choice:");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:insertfront();
+            break;
+            case 2:display();
+            break;
+            case 3 : printf("\tenter position to delete :");
+            scanf("%d",&v);
+            delval(&start,v);
+            display();
+            break;
+            case 4: exit(0);
+            default:printf("\n\t invalid choice\n");
+            break;
+        }
+    }while(ch!=4);
+    return;
+}
